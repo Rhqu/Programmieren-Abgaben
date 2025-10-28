@@ -26,7 +26,6 @@ public class Seasons {
                 System.exit(1);
 
             System.out.print("Der " + month + ". Monat ist " + season);
-
         }
     }
 }
