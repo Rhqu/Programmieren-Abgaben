@@ -1,8 +1,8 @@
 package gameoflife;
 
 public class Cell {
-    private boolean alive;
-    private int livingNeighbors;
+    boolean alive;
+    int livingNeighbors;
     Cell[] neighbors;
 
     public Cell(double probabilityToLive) {
