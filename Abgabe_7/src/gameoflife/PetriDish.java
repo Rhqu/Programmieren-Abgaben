@@ -25,31 +25,44 @@ public class PetriDish {
     }
 
     private void addNeighborsToCellIn(int line, int column) {
-        if (this.cells[column][line].alive) {
-            if (withinBoundaries(column, line - 1)) {
-                if (this.cells[column][line - 1].alive) {
-                    this.cells[column][line].addNeighbor(this.cells[column][line - 1]);
-                }
-            }
-            if (withinBoundaries(column, line + 1)) {
-                if (this.cells[column][line + 1].alive) {
-                    this.cells[column][line].addNeighbor(this.cells[column][line + 1]);
-                }
-            }
+        if (withinBoundaries(line, column - 1)) {
+            this.cells[line][column].addNeighbor(this.cells[line][column - 1]);
         }
+        if (withinBoundaries(line, column + 1)) {
+            this.cells[line][column].addNeighbor(this.cells[line][column + 1]);
+        }
+        if (withinBoundaries(line - 1, column)) {
+            this.cells[line][column].addNeighbor(this.cells[line - 1][column]);
+        }
+        if (withinBoundaries(line + 1, column)) {
+            this.cells[line][column].addNeighbor(this.cells[line + 1][column]);
+        }
+        if (withinBoundaries(line - 1, column - 1)) {
+            this.cells[line][column].addNeighbor(this.cells[line - 1][column - 1]);
+        }
+        if (withinBoundaries(line + 1, column + 1)) {
+            this.cells[line][column].addNeighbor(this.cells[line + 1][column + 1]);
+        }
+        if (withinBoundaries(line - 1, column + 1)) {
+            this.cells[line][column].addNeighbor(this.cells[line - 1][column + 1]);
+        }
+        if (withinBoundaries(line + 1, column - 1)) {
+            this.cells[line][column].addNeighbor(this.cells[line + 1][column - 1]);
+        }
+
 
     }
 
     private boolean withinBoundaries(int line, int column) {
-        if (!(column <= this.cells.length)) {
+        if (line >= this.cells.length || line < 0) {
             return false;
         }
-        return line <= this.cells[column].length;
+        return column < this.cells[line].length && column >= 0;
     }
 
     private void addNeighborsToAllCells() {
-        for (int column = 0; column < this.columns; column++) {
-            for (int line = 0; line < this.lines; line++) {
+        for (int line = 0; line < this.lines; line++) {
+            for (int column = 0; column < this.columns; column++) {
                 addNeighborsToCellIn(line, column);
             }
         }
@@ -62,32 +75,32 @@ public class PetriDish {
     }
 
     private void countLivingNeighborsOfAllCells() {
-        for (int column = 0; column < this.columns; column++) {
-            for (int line = 0; line < this.lines; line++) {
-                this.cells[column][line].countLivingNeighbors();
+        for (int line = 0; line < this.lines; line++) {
+            for (int column = 0; column < this.columns; column++) {
+                this.cells[line][column].countLivingNeighbors();
             }
         }
     }
 
     private void applyRulesToAllCells() {
-        for (int column = 0; column < this.columns; column++) {
-            for (int line = 0; line < this.lines; line++) {
-                this.cells[column][line].applyRules();
+        for (int line = 0; line < this.lines; line++) {
+            for (int column = 0; column < this.columns; column++) {
+                this.cells[line][column].applyRules();
             }
         }
     }
 
     String asString(boolean showHeadline) {
-        StringBuilder table = new StringBuilder();
+        String table = "";
         if (showHeadline) {
-            System.out.println("Generation: " + this.generationNumber);
+            table += "Generation: " + this.generationNumber + "\n";
         }
-        for (int column = 0; column < this.columns; column++) {
-            for (int line = 0; line < this.lines; line++) {
-                table.append(this.cells[column][line].asString());
+        for (int line = 0; line < this.lines; line++) {
+            for (int column = 0; column < this.columns; column++) {
+                table += this.cells[line][column].asString();
             }
-            table.append("\n");
+            table += "\n";
         }
-        return table.toString();
+        return table;
     }
 }

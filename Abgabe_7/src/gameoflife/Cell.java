@@ -22,7 +22,7 @@ public class Cell {
     void countLivingNeighbors() {
         int counter = 0;
         for (Cell neighbor : this.neighbors) {
-            if (neighbor.alive) {
+            if (neighbor != null && neighbor.alive) {
                 counter++;
             }
         }
