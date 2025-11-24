@@ -1,16 +1,16 @@
 package gameoflife;
 
-public class Cell {
-    boolean alive;
-    int livingNeighbors;
-    Cell[] neighbors;
+class Cell {
+    private boolean alive;
+    private int livingNeighbors;
+    private final Cell[] neighbors;
 
-    public Cell(double probabilityToLive) {
+    Cell(double probabilityToLive) {
         this.alive = Math.random() < probabilityToLive;
         this.neighbors = new Cell[8];
     }
 
-    public void addNeighbor(Cell cell) {
+    void addNeighbor(Cell cell) {
         for (int cellIndex = 0; cellIndex < this.neighbors.length; cellIndex++) {
             if (this.neighbors[cellIndex] == null) {
                 this.neighbors[cellIndex] = cell;
@@ -29,7 +29,7 @@ public class Cell {
         this.livingNeighbors = counter;
     }
 
-    public void applyRules() {
+    void applyRules() {
         if (this.livingNeighbors < 2 || this.livingNeighbors > 3) {
             this.alive = false;
         }
@@ -38,7 +38,7 @@ public class Cell {
         }
     }
 
-    public String asString() {
+    String asString() {
         return this.alive ? "X" : " ";
     }
 

@@ -1,16 +1,24 @@
 package gameoflife;
 
-public class Printer {
-    PetriDish petriDish;
-    boolean useGameView;
-    GameView gameView;
+class Printer {
+    private final PetriDish petriDish;
+    private final boolean useGameView;
+    private GameView gameView;
 
-    Printer(PetriDish petriDish, GameView gameView){
+    Printer(PetriDish petriDish, boolean useGameView) {
         this.petriDish = petriDish;
-        this.gameView = gameView;
+        this.useGameView = useGameView;
+        if (useGameView) {
+            gameView = new GameView();
+        }
     }
-    void printPetriDish(){
-        gameView.plotTerminal(this.petriDish.asString(true), "S");
+
+    void printPetriDish() {
+        if (useGameView) {
+            gameView.plotTerminal(petriDish.asString(false), "L");
+        } else {
+            System.out.println(petriDish.asString(true));
+        }
     }
 
 }

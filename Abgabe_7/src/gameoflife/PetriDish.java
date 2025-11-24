@@ -1,11 +1,11 @@
 package gameoflife;
 
 
-public class PetriDish {
-    Cell[][] cells;
-    int lines;
-    int columns;
-    int generationNumber;
+class PetriDish {
+    private final Cell[][] cells;
+    private final int lines;
+    private final int columns;
+    private int generationNumber;
 
     public PetriDish(int lines, int columns, double probabilityToLive) {
         this.lines = lines;
@@ -68,7 +68,7 @@ public class PetriDish {
         }
     }
 
-    public void nextGeneration() {
+    void nextGeneration() {
         countLivingNeighborsOfAllCells();
         applyRulesToAllCells();
         generationNumber++;
