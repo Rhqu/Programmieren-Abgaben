@@ -4,8 +4,8 @@ public class Exit extends GamePiece {
     public Exit(int lines, int columns) {
         super(lines, columns);
         letter = 'E';
-        column -= 1;
-        line /= 2;
+        column = columns - 1;
+        line = lines / 2;
     }
 
 }

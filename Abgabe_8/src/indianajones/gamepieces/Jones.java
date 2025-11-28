@@ -6,14 +6,14 @@ public class Jones extends GamePiece {
     GameView gameView;
     boolean grail;
 
-    public Jones(int lines, int columns, GameView gameView) {
+    public Jones(GameView gameView, int lines, int columns) {
         super(lines, columns);
         letter = 'J';
-        line = 0;
-        column = columns / 2;
+        line = lines  / 2;
+        column = 0;
     }
 
-    boolean samePositionAs(GamePiece gamePiece) {
-        return line == gamePiece.line && column == gamePiece.column;
+    boolean hasSamePositionAs(GamePiece gamePiece) {
+        return (this.line == gamePiece.getLine() && this.column == gamePiece.getColumn());
     }
 }

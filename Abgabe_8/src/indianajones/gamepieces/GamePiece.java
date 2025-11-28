@@ -12,7 +12,7 @@ public class GamePiece {
         this.columns = columns;
     }
 
-    protected void move() {
+    void move() {
     }
 
     public int getLine() {

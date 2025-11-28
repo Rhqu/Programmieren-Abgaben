@@ -11,6 +11,7 @@ public class GameField {
         this.numberOfSnakes = numberOfSnakes;
     }
 
+    @Override
     public String toString() {
         StringBuilder table = new StringBuilder(lines * columns);
         for (int line = 0; line < this.lines; line++) {
