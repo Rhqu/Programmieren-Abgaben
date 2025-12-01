@@ -19,7 +19,9 @@ public class GameElements extends GameField {
         this.exit = new Exit(this.lines, this.columns);
         this.grail = new Grail(this.lines, this.columns);
         this.snakes = new Snake[numberOfSnakes];
-        Arrays.fill(snakes, new Snake(this.lines, this.columns, this.jones));
+        for (int i = 0; i < numberOfSnakes; i++) {
+            snakes[i] = new Snake(this.lines, this.columns, this.jones);
+        }
         allGamePieces = new GamePiece[3 + numberOfSnakes];
         allGamePieces[0] = jones;
         allGamePieces[1] = grail;

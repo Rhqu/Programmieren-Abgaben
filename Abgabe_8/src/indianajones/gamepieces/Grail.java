@@ -10,7 +10,7 @@ public class Grail extends GamePiece {
         line = (int) (Math.random() * lines);
     }
 
-    void beInvisible() {
-        letter = ' ';
+    public void beInvisible() {
+        this.letter = ' ';
     }
 }

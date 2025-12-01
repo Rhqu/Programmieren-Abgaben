@@ -12,17 +12,8 @@ public class Snake extends GamePiece {
     }
 
     @Override
-    void move() {
+    public void move() {
         double randomWalk = Math.random();
-        if (this.line + 1 == jones.getLine()) {
-            this.line += 1;
-        } else if (this.line - 1 == jones.getLine()) {
-            this.line -= 1;
-        } else if (this.column + 1 == jones.getColumn()) {
-            this.column += 1;
-        } else if (this.column - 1 == jones.getColumn()) {
-            this.column -= 1;
-        }
         if (randomWalk > 0.5) {
             if (this.line < jones.getLine()) {
                 this.line += 1;

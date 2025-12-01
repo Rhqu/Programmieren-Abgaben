@@ -1,8 +1,8 @@
 package indianajones.gamepieces;
 
 public class GamePiece {
-    private final int lines;
-    private final int columns;
+    final int lines;
+    final int columns;
     public int line;
     public int column;
     char letter;
@@ -12,7 +12,7 @@ public class GamePiece {
         this.columns = columns;
     }
 
-    void move() {
+    public void move() {
     }
 
     public int getLine() {
