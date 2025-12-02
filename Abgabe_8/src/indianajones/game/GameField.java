@@ -18,6 +18,7 @@ public class GameField {
             for (int column = 0; column < this.columns; column++) {
                 table.append(charAtPosition(line, column));
             }
+            table.append("\n");
         }
         return table.toString();
     }

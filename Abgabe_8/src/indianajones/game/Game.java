@@ -19,24 +19,25 @@ public class Game extends GameElements {
         }
     }
 
-    void moveAllGamePieces() {
+    private void moveAllGamePieces() {
         for (GamePiece gamePiece : super.allGamePieces) {
             gamePiece.move();
         }
     }
 
-    void updateGameLogic() {
+    private void updateGameLogic() {
         if (jones.hasSamePositionAs(grail)) {
             grail.beInvisible();
             jones.grail = true;
         }
-        for (Snake snake : super.snakes) {
+        for (Snake snake : snakes) {
             if (jones.hasSamePositionAs(snake)) {
                 jonesWonTheGame = false;
+                gameOver = true;
             }
         }
         if (jones.hasSamePositionAs(exit)) {
-            if(jones.grail){
+            if (jones.grail) {
                 gameOver = true;
                 jonesWonTheGame = true;
             }
@@ -44,9 +45,9 @@ public class Game extends GameElements {
     }
 
     @Override
-    char charAtPosition(int lines, int columns) {
+    char charAtPosition(int line, int column) {
         if (!gameOver) {
-            return super.charAtPosition(lines, columns);
+            return super.charAtPosition(line, column);
         }
         if (jonesWonTheGame) {
             return 'J';

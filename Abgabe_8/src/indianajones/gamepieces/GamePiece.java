@@ -3,8 +3,8 @@ package indianajones.gamepieces;
 public class GamePiece {
     final int lines;
     final int columns;
-    public int line;
-    public int column;
+    int line;
+    int column;
     char letter;
 
     public GamePiece(int lines, int columns) {

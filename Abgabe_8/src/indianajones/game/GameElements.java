@@ -6,14 +6,14 @@ import indianajones.gamepieces.*;
 import java.util.Arrays;
 
 
-public class GameElements extends GameField {
+class GameElements extends GameField {
     Jones jones;
     Exit exit;
     Grail grail;
     Snake[] snakes;
     GamePiece[] allGamePieces;
 
-    GameElements(GameView gameView, int lines, int columns, int numberOfSnakes) {
+    protected GameElements(GameView gameView, int lines, int columns, int numberOfSnakes) {
         super(lines, columns, numberOfSnakes);
         this.jones = new Jones(gameView, lines, columns);
         this.exit = new Exit(this.lines, this.columns);

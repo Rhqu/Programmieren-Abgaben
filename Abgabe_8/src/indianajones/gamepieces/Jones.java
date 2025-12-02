@@ -5,7 +5,7 @@ import static java.awt.event.KeyEvent.*;
 import indianajones.game.GameView;
 
 public class Jones extends GamePiece {
-    GameView gameView;
+    private final GameView gameView;
     public boolean grail;
 
     public Jones(GameView gameView, int lines, int columns) {
