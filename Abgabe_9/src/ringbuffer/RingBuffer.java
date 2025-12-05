@@ -1,19 +1,20 @@
 package ringbuffer;
 
-public class RingBuffer {
-    Element readElement;
-    Element writeElement;
+class RingBuffer {
+    private Element readElement;
+    private Element writeElement;
 
     RingBuffer(int size) {
         Element element = new Element();
         element.next = element;
-        for (int i = 0; i < size; i++) {
+
+        for (int i = 0; i < size - 1; i++) {
             Element nextElement = new Element();
+            nextElement.next = element.next;
             element.next = nextElement;
-            nextElement.next = nextElement;
         }
-        writeElement = element;
         readElement = element;
+        writeElement = element;
     }
 
     Integer read() {
@@ -30,17 +31,22 @@ public class RingBuffer {
     @Override
     public String toString() {
         StringBuilder display = new StringBuilder();
-        Element startElement = readElement.next;
+        Element startElement = readElement;
         do {
-            if (readElement == writeElement){
-                display.append("w/r ");
+            if (writeElement == startElement && readElement == startElement) {
+                display.append("r/w ");
             } else if (readElement == startElement) {
-                display.append("r ");
-            } else if (writeElement == startElement);
-        } while (startElement != readElement.next){
+                display.append("r   ");
+            } else if (writeElement == startElement) {
+                display.append("w   ");
+            } else {
+                display.append("    ");
+            }
+            display.append(startElement.integer).append("\n");
+            startElement = startElement.next;
 
-        }
-
+        } while (startElement != readElement);
+        return display.toString();
     }
 
 

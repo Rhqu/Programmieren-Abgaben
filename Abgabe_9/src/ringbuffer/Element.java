@@ -1,6 +1,6 @@
 package ringbuffer;
 
-public class Element {
+class Element {
     Element next;
     Integer integer;
 
