@@ -2,11 +2,11 @@ package frograce.game;
 
 public class Frog {
     private static final double MAXIMUM_POSSIBLE_JUMP_DISTANCE_IN_CM = 100;
-    String name;
-    double strength;
-    double endurance;
-    double willpower;
-    int currentDistanceInCm;
+    private final String name;
+    private final double strength;
+    private final double endurance;
+    private final double willpower;
+    private int currentDistanceInCm;
 
     public Frog(String name, double strength, double endurance, double willpower) {
         this.name = name;
@@ -22,17 +22,17 @@ public class Frog {
         return (int) Math.max(maximumDistance, MAXIMUM_POSSIBLE_JUMP_DISTANCE_IN_CM / 4);
     }
 
-    public void jump() {
+    void jump() {
         if (Math.random() <= willpower) {
             currentDistanceInCm += (int) (Math.random() * calculateMaximumJumpDistanceInCmForNextJump());
         }
     }
 
-    public String getName() {
+    String getName() {
         return this.name;
     }
 
-    public int getCurrentDistanceInCm() {
+    int getCurrentDistanceInCm() {
         return this.currentDistanceInCm;
     }
 

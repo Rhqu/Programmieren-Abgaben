@@ -1,10 +1,10 @@
 package frograce.game;
 
 public class Game {
-    Track track;
-    Frog[] frogs;
-    Frog winningFrog;
-    public boolean gameOver;
+    private final Track track;
+    private final Frog[] frogs;
+    private Frog winningFrog;
+    private boolean gameOver;
 
     public void nextIteration() {
         shuffleFrogs();
@@ -27,7 +27,7 @@ public class Game {
     private void letFrogsJumpAndCheckForWinner() {
         for (Frog frog : frogs) {
             frog.jump();
-            if (frog.currentDistanceInCm >= track.getCurrentDistanceInCm()) {
+            if (frog.getCurrentDistanceInCm() >= track.getDistanceInCm()) {
                 winningFrog = frog;
                 gameOver = true;
                 break;

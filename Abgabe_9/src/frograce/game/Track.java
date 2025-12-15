@@ -1,9 +1,9 @@
 package frograce.game;
 
 public class Track {
-    String name;
-    int distanceInCm;
-    Frog[] frogs;
+    private final String name;
+    private final int distanceInCm;
+    private final Frog[] frogs;
 
     public Track(String name, int distanceInCm, Frog[] frogs) {
         this.name = name;
@@ -11,7 +11,7 @@ public class Track {
         this.frogs = frogs;
     }
 
-    int getCurrentDistanceInCm() {
+    int getDistanceInCm() {
         return distanceInCm;
     }
 
@@ -29,7 +29,7 @@ public class Track {
         return display.toString();
     }
 
-    void createEdgeLine(StringBuilder display) {
+    private void createEdgeLine(StringBuilder display) {
         display.append("\n").append(" ").append("Start |");
         for (int i = 0; i < distanceInCm; i += 10) {
             display.append("-");

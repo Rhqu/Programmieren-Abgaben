@@ -4,11 +4,13 @@ import frograce.game.Game;
 
 public class GameViewPrinter {
 
-    private final Game game;
-    private final GameView gameView;
+    private int trackDistanceInCm;
+    private Game game;
+    private GameView gameView;
 
     public GameViewPrinter(Game game, int trackDistanceInCm) {
         this.game = game;
+        this.trackDistanceInCm = trackDistanceInCm;
         gameView = new GameView();
     }
 
