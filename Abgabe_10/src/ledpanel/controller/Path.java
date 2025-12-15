@@ -25,13 +25,53 @@ public class Path {
      */
     public Path(int... keyPositions) {
         this.keyPositions = keyPositions;
+        calculatePaths();
     }
 
-    /**
-     * Der Pfad wird als LED-Array zurückgegeben.
-     *
-     * @return Der fertiggestellte Pfad.
-     */
+    private void calculatePaths() {
+
+        int totalSize = 1;
+        for (int i = 0; i < keyPositions.length - 1; i++) {
+            int start = keyPositions[i];
+            int end = keyPositions[i + 1];
+            totalSize += countSteps(start, end);
+        }
+
+
+        leds = new int[totalSize];
+        int index = 0;
+
+        for (int i = 0; i < keyPositions.length - 1; i++) {
+            int start = keyPositions[i];
+            int end = keyPositions[i + 1];
+            int step = getStep(start, end);
+
+            int current = (i == 0) ? start : start + step;
+
+            while (current != end + step) {
+                assert leds != null;
+                leds[index++] = current;
+                current += step;
+            }
+        }
+    }
+
+    private int countSteps(int start, int end) {
+        if (start / 40 == end / 40) {
+            return Math.abs(end - start);
+        } else {
+            return Math.abs(end - start) / 40;
+        }
+    }
+
+    private int getStep(int start, int end) {
+        if (start / 40 == end / 40) {
+            return (end > start) ? 1 : -1;
+        } else {
+            return (end > start) ? 40 : -40;
+        }
+    }
+
     int[] getLeds() {
         return leds;
     }

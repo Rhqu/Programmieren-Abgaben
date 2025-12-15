@@ -23,6 +23,28 @@ public class MovingStringImage extends StringImage {
      * @return Das Array mit der Animation.
      */
     public String[] movingStrings() {
-        return null;
+        int panelWidth = 40;
+        int textWidth = string.length() * 8;
+        int totalFrames = panelWidth + textWidth;
+
+        String[] lines = stringImage.split("\\R");
+        String[] paddedLines = new String[linesOfCharImage];
+        String padding = " ".repeat(panelWidth);
+
+        for (int i = 0; i < linesOfCharImage; i++) {
+            paddedLines[i] = padding + lines[i] + padding;
+        }
+
+        String[] frames = new String[totalFrames];
+        for (int frame = 0; frame < totalFrames; frame++) {
+            StringBuilder frameBuilder = new StringBuilder();
+            for (int line = 0; line < linesOfCharImage; line++) {
+                frameBuilder.append(paddedLines[line].substring(frame, frame + panelWidth));
+                frameBuilder.append("\n");
+            }
+            frames[frame] = frameBuilder.toString();
+        }
+
+        return frames;
     }
 }

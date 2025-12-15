@@ -1,7 +1,6 @@
 package ledpanel.controller;
 
 import ledpanel.hardware.LEDPanel;
-import ledpanel.controller.LEDController;
 
 /**
  * Diese Klasse enthält das API (Application Programming Interface) für das LED-Panel. Die angebotenen Methoden können
@@ -21,17 +20,19 @@ import ledpanel.controller.LEDController;
  *  280 . . . . . . . . . . . . . . . . . . . . . 319</pre>
  * <br>
  */
-public class API extends LEDController {
+public class API {
+    private final LEDOperations ledPanel;
 
-    public API(LEDPanel ledPanel) {
-        super(ledPanel);
-    }
-
-    /**
+    /*
      * a
      * Diese Konstante steuert, wie das Panel ausgegeben wird. Wenn die Variable auf true gesetzt ist, werden Änderungen
      * in einer Tabelle auf der Konsole ausgegeben. Ansonsten erfolgt die Ausgabe in einer grafischen Oberfläche.
      */
+
+    public API() {
+        this.ledPanel = new LEDOperations();
+    }
+
     public static final boolean DEBUGGING_MODE = false;
 
     /**
@@ -49,9 +50,9 @@ public class API extends LEDController {
      * gelöscht.
      */
     public void testLEDPanel() {
-        turnAllOn();
-        waitFor(30);
-        turnAllOff();
+        ledPanel.turnAllOn();
+        waitFor(500);
+        ledPanel.turnAllOff();
     }
 
     /**
@@ -65,6 +66,7 @@ public class API extends LEDController {
      * @param milliseconds Die LEDs bleiben für diesen Zeitraum eingeschaltet.
      */
     public void showLEDs(int[] ledIndices, int milliseconds) {
+        ledPanel.showSpecificLED(ledIndices, milliseconds);
     }
 
     /**
@@ -81,6 +83,7 @@ public class API extends LEDController {
      * @param repetitions     Anzahl der Wiederholungen.
      */
     public void showBlinkingLEDs(int[] leds, int millisecondsOn, int millisecondsOff, int repetitions) {
+        ledPanel.blinkingLED(leds, millisecondsOn, millisecondsOff, repetitions);
     }
 
     /**
@@ -101,6 +104,7 @@ public class API extends LEDController {
      * @param repetitions  Anzahl der Wiederholungen.
      */
     public void showRunningDot(Path path, int milliseconds, int repetitions) {
+        ledPanel.runningDot(path, milliseconds, repetitions);
     }
 
     /**
@@ -113,6 +117,7 @@ public class API extends LEDController {
      * @param repetitions  Anzahl der Wiederholungen.
      */
     public void showRunningDots(Path[] path, int milliseconds, int repetitions) {
+        ledPanel.runningDots(path, milliseconds, repetitions);
     }
 
     /**
@@ -131,6 +136,7 @@ public class API extends LEDController {
      * @param milliseconds Zeitdauer der Anzeige.
      */
     public void showStringImage(String stringImage, int milliseconds) {
+        ledPanel.showStringImage(stringImage, milliseconds);
     }
 
     /**
@@ -151,6 +157,7 @@ public class API extends LEDController {
      * @param repetitions  Anzahl der Wiederholungen des kompletten Durchlaufs.
      */
     public void showMovingStringImage(String[] strings, int milliseconds, int repetitions) {
+        ledPanel.showMovingStringImage(strings, milliseconds, repetitions);
     }
 
     /**
