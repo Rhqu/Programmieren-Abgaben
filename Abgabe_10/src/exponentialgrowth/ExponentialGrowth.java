@@ -16,7 +16,7 @@ public class ExponentialGrowth {
     }
 
     private void printBigInteger() {
-        for (int i = 1; i <= 25; i++) {
+        for (int i = 1; i <= 100; i++) {
             System.out.println(i + " (BigInteger): " + BigInteger.TEN.pow(i));
         }
     }

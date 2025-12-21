@@ -1927,7 +1927,7 @@ public final class GameView {
         public static final String RESOURCE_PREFIX = "/resources/";
         public static final String NEGATIVE_LINEWEIGHT = "lineWeight can't be negative.";
 
-        private static void sleep(long milliseconds) {
+            private static void sleep(long milliseconds) {
             try {
                 Thread.sleep(milliseconds);
             } catch (InterruptedException e) {

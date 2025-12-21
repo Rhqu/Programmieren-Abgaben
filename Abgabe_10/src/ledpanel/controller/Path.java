@@ -44,7 +44,7 @@ public class Path {
         for (int i = 0; i < keyPositions.length - 1; i++) {
             int start = keyPositions[i];
             int end = keyPositions[i + 1];
-            int step = getStep(start, end);
+            int step = calculateStep(start, end);
 
             int current = (i == 0) ? start : start + step;
 
@@ -64,7 +64,7 @@ public class Path {
         }
     }
 
-    private int getStep(int start, int end) {
+    private int calculateStep(int start, int end) {
         if (start / 40 == end / 40) {
             return (end > start) ? 1 : -1;
         } else {

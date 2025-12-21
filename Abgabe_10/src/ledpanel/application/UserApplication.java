@@ -4,15 +4,12 @@ import ledpanel.controller.API;
 import ledpanel.controller.MovingStringImage;
 import ledpanel.controller.Path;
 import ledpanel.controller.StringImage;
-import ledpanel.hardware.LEDPanel;
 
 public class UserApplication {
 
     public static void main(String[] args) {
         UserApplication userApplication = new UserApplication();
-        userApplication.api.testLEDPanel();
-        userApplication.api.showLEDs(new int[]{0, 39, 280, 319}, 1000);
-        userApplication.api.showBlinkingLEDs(new int[]{139, 140, 179, 180}, 1000, 1000, 5);
+        userApplication.lightShow();
     }
 
     private final API api;

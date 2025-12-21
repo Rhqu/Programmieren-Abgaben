@@ -3,7 +3,6 @@ package ledpanel.controller;
 import ledpanel.hardware.LEDPanel;
 
 public class LEDController extends LEDPanel {
-    private static final int elementsPerMatrix = 64;
     private static final int panelWidth = 40;
     private static final int matrixWidth = 8;
 
